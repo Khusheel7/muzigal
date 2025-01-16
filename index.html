@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Simple CSS for showing tabs */
+        .tab {
+            display: none;
+        }
+        .tab.active {
+            display: block;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Attendance Portal</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#registration" data-tab="registration">REGISTRATION</a></li>
+                <li><a href="#admittedList" data-tab="admittedList">ADMITTED LIST</a></li>
+                <li><a href="#attendance" data-tab="attendance">ATTENDANCE</a></li>
+                <li><a href="#dashboard" data-tab="dashboard">DASHBOARD</a></li>
+            </ul>
+        </nav>
+        
+        
+        <main>
+            <section id="registration" class="tab active">
+                <h2>Registration</h2>
+                <form id="registration-form" autocomplete="on">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required autocomplete="name">
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" required autocomplete="tel">
+
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required autocomplete="email">
+
+                    <label for="type">Type:</label>
+                    <select id="type" name="type" required autocomplete="off">
+                        <option value="">Select</option>
+                        <option value="student">Student</option>
+                        <option value="staff">Staff</option>
+                    </select>
+
+                    <div id="student-fields" class="dynamic-fields hidden">
+                        <label for="enrollmentDate">Enrollment Date:</label>
+                        <input type="date" id="enrollmentDate" name="enrollmentDate" autocomplete="off">
+
+                        <label for="expiryDate">Expiry Date:</label>
+                        <input type="date" id="expiryDate" name="expiryDate" autocomplete="off">
+
+                        <label for="course">Course:</label>
+                        <select id="course" name="course" autocomplete="off">
+                            <option value="">Select</option>
+                            <option value="violin">Violin</option>
+                            <option value="vocals">Vocals</option>
+                            <option value="guitar">Guitar</option>
+                            <option value="keyboard">Keyboard</option>
+                        </select>
+                    </div>
+
+                    <div id="staff-fields" class="dynamic-fields hidden">
+                        <label for="department">Department:</label>
+                        <select id="department" name="department" autocomplete="off">
+                            <option value="">Select</option>
+                            <option value="violin">Violin</option>
+                            <option value="vocals">Vocals</option>
+                            <option value="guitar">Guitar</option>
+                            <option value="keyboard">Keyboard</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="add-button">Add</button>
+                </form>
+            </section>
+
+            <section id="admittedList" class="tab hidden">
+                <h2>Admitted List</h2>
+                <div>
+                    <h3>Students</h3>
+                    <ul id="student-list"></ul>
+                </div>
+                <div>
+                    <h3>Staff</h3>
+                    <ul id="staff-list"></ul>
+                </div>
+            </section>
+
+            <section id="attendance" class="tab hidden">
+                <h2>Attendance</h2>
+                <form id="attendance-form">
+                    <label for="attendance-date">Date:</label>
+                    <input type="date" id="attendance-date" name="attendance-date" required>
+
+
+                    <label for="attendance-type">Type:</label>
+                    <select id="attendance-type" name="attendance-type" required>
+                        <option value="">Select</option>
+                        <option value="student">Student</option>
+                        <option value="staff">Staff</option>
+                    </select>
+
+                    <label for="attendance-name">Name:</label>
+                    <select id="attendance-name" name="attendance-name" required></select>
+
+                    <label for="status">Attendance:</label>
+                    <select id="status" name="status" required>
+                        <option value="present">Present</option>
+                        <option value="absent">Absent</option>
+                    </select>
+
+                    <button type="submit">Mark Attendance</button>
+                </form>
+            </section>
+
+            <section id="dashboard" class="tab hidden">
+                <h2>Dashboard</h2>
+                <form id="dashboard-form">
+                    <label for="dashboard-type">Type:</label>
+                    <select id="dashboard-type" name="dashboard-type" required>
+                        <option value="">Select</option>
+                        <option value="student">Student</option>
+                        <option value="staff">Staff</option>
+                    </select>
+            
+                    <label for="dashboard-name">Name:</label>
+                    <select id="dashboard-name" name="dashboard-name" required></select>
+                </form>
+            
+                <div id="dashboard-info">
+                    <h3>Details</h3>
+                    <p id="dashboard-details"></p>
+                    <p id="attendance-summary"></p>
+                </div>
+            </section>
+                        
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
